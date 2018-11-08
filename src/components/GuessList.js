@@ -4,11 +4,12 @@ import './GuessList.css';
 export default function GuessList(props) {
   // Props received:
   //  guessList: array
+  //  guessListClass: array
   
   const list = props.guessList.map((guess, index) => {
     
     return(
-      <li key={index}>{guess}</li>
+      <li className={props.guessListClass[index]} key={index}>{guess}</li>
     );
     
   });

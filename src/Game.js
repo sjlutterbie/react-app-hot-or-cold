@@ -18,6 +18,8 @@ class Game extends React.Component {
       secretNumber: Math.floor(Math.random() * 100)+ 1,
       // Guess list is added to with each form submit
       guessList: [],
+      // CSS classes for guessList
+      guessListClass: [],
       // How close must a guess be to earn "Hot" feedback?
       hotRange: 10,
       // Set the game range to avoid hard-coding.
@@ -32,11 +34,26 @@ class Game extends React.Component {
   }
   
   submitGuess(guess) {
+    
+    // Set class for guessList display
+    let guessClass;
 
+    if(Math.abs(guess - this.state.secretNumber) <= this.state.hotRange) {
+      guessClass = 'hot';
+    } else {
+      guessClass = 'cold';
+    }
+    
+    if(Number(guess) === this.state.secretNumber) {
+      guessClass = 'win';
+    }
+    
     this.setState({
-        guessList: [...this.state.guessList, guess]
+        guessList: [...this.state.guessList, guess],
+        guessListClass: [...this.state.guessListClass, guessClass]
       }
     );
+    
     
   }
   
@@ -79,7 +96,8 @@ class Game extends React.Component {
 
           <GuessCount guessCount={this.state.guessList.length}/>
           
-          <GuessList guessList={this.state.guessList}/>
+          <GuessList guessList={this.state.guessList}
+                     guessListClass = {this.state.guessListClass}/>
 
         </div>
         

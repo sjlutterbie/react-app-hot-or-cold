@@ -23,16 +23,24 @@ export default function GuessFeedback(props) {
 
   // Initiate feedback
   let feedback;
+  let feedbackClass = '';
   
     // Has a guess been made?
     if (guess) {
       // Is guess within hotRange?
-      ((guess >= secretNumber - hotRange) && (guess <= secretNumber + hotRange)) ?
-        feedback = hotFeedback : feedback = coldFeedback;
-        
+      if (Math.abs(guess - secretNumber) <= hotRange) {
+        feedback = hotFeedback;
+        feedbackClass = 'hot';
+      } else {
+        feedback = coldFeedback;
+        feedbackClass = 'cold';
+      }
+      
+
       // Is guess correct?
       if(guess === secretNumber) {
         feedback = winFeedback;
+        feedbackClass = 'win';
         
         if(submitVisible) {
           props.onWin(guess);
@@ -44,7 +52,7 @@ export default function GuessFeedback(props) {
     }
   
     return(
-      <div className="game-feedback">
+      <div className={["game-feedback",feedbackClass].join(' ')}>
         <p>{feedback}</p>
       </div>
       
