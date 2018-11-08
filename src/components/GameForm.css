@@ -1,0 +1,18 @@
+.game-form {
+  width: 90%;
+}
+
+.form-elements {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-form input {
+  display: block;
+  margin: 4px;
+  padding: 4px;
+  width: 40%;
+
+}

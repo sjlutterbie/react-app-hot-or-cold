@@ -61,7 +61,7 @@ class Game extends React.Component {
     return (
       <main>
         <h1>Hot or cold?</h1>
-        <div className="Game">
+        <div className="game">
         
           <GuessFeedback guess={this.state.guessList[
                            this.state.guessList.length-1]}

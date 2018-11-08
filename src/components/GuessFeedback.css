@@ -1,0 +1,8 @@
+.game-feedback {
+  border: 1px solid #0f0;
+  width: 90%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
