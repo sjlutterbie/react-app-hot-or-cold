@@ -20,6 +20,12 @@ class Game extends Component {
     };
   }
 
+  // DEV NOTE:
+  //  While building the game-form, guess-count is set to render assorted dev
+  //    feedback, rather than the guess count. This will be updated as the
+  //    work progresses, and wille eventually be converted to a component,
+  //    itself.
+
   render() {
     return (
       <main>
@@ -33,7 +39,7 @@ class Game extends Component {
             <input type="submit" value="Guess!"/>
           </form>
           <div className="guess-count">
-            <p>5</p>
+            <p>guessList: {this.state.guessList}</p>
           </div>
           <div className="guess-list">
             <ul>
