@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import './GuessList.css';
 
@@ -9,9 +7,9 @@ export default function GuessList(props) {
   
   const list = [];
   
-  props.guessList.forEach(guess => {
+  props.guessList.map((guess, index) => {
     
-    list.push(<li>{guess}</li>);
+    list.push(<li key={index}>{guess}</li>);
     
   });
   
