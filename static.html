@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hot or Cold?</title>
+    <meta name="description" content="A simple number guessing game built in React">
+  </head>
+
+  <body>
+    <h1>Hot or cold?</h1>
+    <main class="game-area">
+      <div class="feedback-area">
+        [Guess a number! | Hot | Cold ]
+      </div>
+      <form class="game-form">
+        <input type="number" min="1" max="100" required>
+        <input type="submit" value="Guess!">
+      </form>
+      <div class="guess-count">5</div>
+      <div class="guess-list">
+        <ul>
+          <li>43</li>
+          <li>1</li>
+          <li>65</li>
+          <li>92</li>
+          <li>34</li>
+        </ul>
+        
+      </div>
+      
+    </main>
+    <button class="new-game-button">New Game</button>
+    
+    
+    <!--
+      
+      <h1> Page header
+      newGame button
+        Also a react component that resets the game Area (by recalling the roout function)
+
+
+      Game area (React state owner)
+        Form for submitting guesses
+          onSubmit action
+        Feedback area
+          Feedback is props-based
+        guessCount area
+          Count is guessList.length
+        previousGuesses area
+          previousGuesses is guessList => <li>
+    
+    -->
+  
+    
+
+
+    
+  </body>
+</html>
