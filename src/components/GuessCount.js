@@ -4,10 +4,19 @@ import './GuessCount.css';
 export default function GuessCount(props) {
   // Props received:
   //  guessCount: number
+  //  guess: number
+  //  secretNumber: number
+  
+  let feedback = `${props.guessCount} guesses, so far...`;
+  
+  if (Number(props.guess) === props.secretNumber) {
+    feedback = `It took you ${props.guessCount} guesses!`;
+  }
+  
   
   return (
     <div className="guess-count">
-      <p> {props.guessCount} guesses, so far...</p>
+      <p>{feedback}</p>
     </div>
   );
 

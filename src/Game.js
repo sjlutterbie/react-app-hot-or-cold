@@ -94,7 +94,10 @@ class Game extends React.Component {
                     submitAction={guess => this.submitGuess(guess)}
                     submitVisible = {this.state.submitVisible}/>
 
-          <GuessCount guessCount={this.state.guessList.length}/>
+          <GuessCount guessCount={this.state.guessList.length}
+                      secretNumber = {this.state.secretNumber}
+                      guess={this.state.guessList[
+                           this.state.guessList.length-1]}/>
           
           <GuessList guessList={this.state.guessList}
                      guessListClass = {this.state.guessListClass}/>
