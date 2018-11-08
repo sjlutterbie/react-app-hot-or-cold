@@ -19,6 +19,7 @@ export default function GuessFeedback(props) {
   const hotFeedback = props.hotFeedback;
   const coldFeedback = props.coldFeedback;
   const winFeedback = props.winFeedback;
+  const submitVisible = props.submitVisible;
 
   // Initiate feedback
   let feedback;
@@ -32,7 +33,10 @@ export default function GuessFeedback(props) {
       // Is guess correct?
       if(guess == secretNumber) {
         feedback = winFeedback;
-        props.onWin(guess);
+        
+        if(submitVisible) {
+          props.onWin(guess);
+        }
       }
         
     } else {

@@ -31,9 +31,15 @@ export default class GameForm extends React.Component {
     return (
    
       <form className="game-form" onSubmit={(e) => this.onSubmit(e)}>
-          <input type="number" min={this.props.minGuess} max={this.props.maxGuess}
-                 ref={input => this.guessInput = input} required />
-          <input type="submit" value="Guess!"/>
+          {this.props.submitVisible && 
+            <div className="form-elements">
+              <input type="number"
+                     min={this.props.minGuess}
+                     max={this.props.maxGuess}
+                     ref={input => this.guessInput = input} required />
+              <input type="submit" value="Guess!"/>
+            </div>
+          }
       </form>
     
     );    
