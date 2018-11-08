@@ -1,9 +1,14 @@
-import React, { Component } from 'react';
+'use strict';
+
+import React from 'react';
 import './Game.css';
 
 import GameForm from './components/GameForm';
+import GuessCount from './components/GuessCount';
+import GuessList from './components/GuessList';
+import GuessFeedback from './components/GuessFeedback';
 
-class Game extends Component {
+class Game extends React.Component {
   // Game component owns the primary state, which it passses to the
   //  sub-components as props
   
@@ -22,7 +27,9 @@ class Game extends Component {
       maxGuess: 100,
       // Set the hot/cold feedback to avoid hard-coding.
       hotFeedback: "Hot!",
-      coldFeedback: "Cold..."
+      coldFeedback: "Cold...",
+      winFeedback: "Correct! You win!",
+      submitVisible: true
     };
   }
   
@@ -35,35 +42,37 @@ class Game extends Component {
     
   }
   
-
-  // DEV NOTE:
-  //  While building the game-form, guess-count is set to render assorted dev
-  //    feedback, rather than the guess count. This will be updated as the
-  //    work progresses, and wille eventually be converted to a component,
-  //    itself.
-
+  onWin(guess) {
+    console.log("Congratulations!");
+    this.setState({
+      submitVisible: false
+    });
+  }
+  
   render() {
     return (
       <main>
         <h1>Hot or cold?</h1>
         <div className="Game">
-          <div className="feedback-area">
-            <p>[Guess a number! | Hot | Cold ]</p>
-          </div>
-          <GameForm minGuess={this.state.minGuess} maxGuess={this.state.maxGuess}
-            submitAction={guess => this.submitGuess(guess)}/>
-          <div className="guess-count">
-            <p>guessList: {this.state.guessList}</p>
-          </div>
-          <div className="guess-list">
-            <ul>
-              <li>43</li>
-              <li>1</li>
-              <li>65</li>
-              <li>92</li>
-              <li>34</li>
-            </ul>
-          </div>
+        
+          <GuessFeedback guess={this.state.guessList[
+                           this.state.guessList.length-1]}
+                         secretNumber = {this.state.secretNumber}
+                         hotRange = {this.state.hotRange}
+                         hotFeedback = {this.state.hotFeedback}
+                         coldFeedback = {this.state.coldFeedback}
+                         winFeedback = {this.state.winFeedback}
+                         onWin = {guess => this.onWin(guess)}
+                         submitVisible = {this.state.submitVisible}/>
+          <GameForm minGuess={this.state.minGuess}
+                    maxGuess={this.state.maxGuess}
+                    submitAction={guess => this.submitGuess(guess)}
+                    submitVisible = {this.state.submitVisible}/>
+
+          <GuessCount guessCount={this.state.guessList.length}/>
+          
+          <GuessList guessList={this.state.guessList}/>
+
         </div>
         
         <button className="new-game">New Game</button>
