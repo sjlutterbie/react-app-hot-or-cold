@@ -21,7 +21,7 @@ export default class GameForm extends React.Component {
     
     // Execute callback
     this.props.submitAction(guess);
-    
+
     // Reset form
     this.guessInput.value ='';
 
@@ -30,11 +30,11 @@ export default class GameForm extends React.Component {
   render() {
   
     return (
-    
+   
       <form className="game-form" onSubmit={(e) => this.onSubmit(e)}>
-        <input type="number" min={this.props.minGuess} max={this.props.maxGuess}
-               ref={input => this.guessInput = input} required />
-        <input type="submit" value="Guess!"/>
+          <input type="number" min={this.props.minGuess} max={this.props.maxGuess}
+                 ref={input => this.guessInput = input} required />
+          <input type="submit" value="Guess!"/>
       </form>
     
     );    

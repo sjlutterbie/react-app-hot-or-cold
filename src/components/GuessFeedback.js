@@ -9,6 +9,7 @@ export default function GuessFeedback(props) {
   //  hotFeedback: string
   //  coldFeedback: string
   //  winFeedback: string
+  //  onWin: callback function
   
   // Extract vars from props, for convenience
   //  Note: Is there a more elegant way to do this?
@@ -18,42 +19,31 @@ export default function GuessFeedback(props) {
   const hotFeedback = props.hotFeedback;
   const coldFeedback = props.coldFeedback;
   const winFeedback = props.winFeedback;
-  
+
   // Initiate feedback
   let feedback;
   
-  // Has a guess been made?
-  if (guess) {
-    // Is guess within hotRange?
-    ((guess >= secretNumber - hotRange) && (guess <= secretNumber + hotRange)) ?
-      feedback = hotFeedback : feedback = coldFeedback;
-      
-    // Is guess correct?
-    if(guess == secretNumber) {
-      console.log('Win!');
-      feedback = winFeedback;
+    // Has a guess been made?
+    if (guess) {
+      // Is guess within hotRange?
+      ((guess >= secretNumber - hotRange) && (guess <= secretNumber + hotRange)) ?
+        feedback = hotFeedback : feedback = coldFeedback;
+        
+      // Is guess correct?
+      if(guess == secretNumber) {
+        feedback = winFeedback;
+        props.onWin(guess);
+      }
+        
+    } else {
+      feedback = 'Ready for your guess...';
     }
+  
+    return(
+      <div className="game-feedback">
+        <p>{feedback}</p>
+      </div>
       
-  } else {
-    feedback = 'Ready for your guess...';
-  }
+    );
 
-  return(
-    <div className="game-feedback">
-      <p>{feedback}</p>
-      
-      <p>Dev Feedback:</p>
-      <ul>
-        <li>Guess: {guess}</li>
-        <li>Target: {secretNumber}</li>
-        <li>hotRange: {hotRange}</li>
-        <li>Distance: {Math.abs(guess - secretNumber)}</li>
-      </ul>
-    </div>
-    
-  );
-  
-  
-  
-  
 }
