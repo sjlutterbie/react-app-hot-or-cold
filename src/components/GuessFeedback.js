@@ -13,7 +13,7 @@ export default function GuessFeedback(props) {
   
   // Extract vars from props, for convenience
   //  Note: Is there a more elegant way to do this?
-  const guess = props.guess;
+  const guess = Number(props.guess);
   const secretNumber = props.secretNumber;
   const hotRange = props.hotRange;
   const hotFeedback = props.hotFeedback;
@@ -31,7 +31,7 @@ export default function GuessFeedback(props) {
         feedback = hotFeedback : feedback = coldFeedback;
         
       // Is guess correct?
-      if(guess == secretNumber) {
+      if(guess === secretNumber) {
         feedback = winFeedback;
         
         if(submitVisible) {

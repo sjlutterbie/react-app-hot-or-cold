@@ -5,11 +5,11 @@ export default function GuessList(props) {
   // Props received:
   //  guessList: array
   
-  const list = [];
-  
-  props.guessList.map((guess, index) => {
+  const list = props.guessList.map((guess, index) => {
     
-    list.push(<li key={index}>{guess}</li>);
+    return(
+      <li key={index}>{guess}</li>
+    );
     
   });
   
