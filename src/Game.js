@@ -2,6 +2,24 @@ import React, { Component } from 'react';
 import './Game.css';
 
 class Game extends Component {
+  // Game component owns the primary state, which it passses to the
+  //  sub-components as props
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      // Target number is set when the game is loaded
+      secretNumber: Math.floor(Math.random() * 100)+ 1,
+      // Guess list is added to with each form submit
+      guessList: [],
+      // How close must a guess be to earn "Hot" feedback?
+      hotRange: 10,
+      // Set the hot/cold feedback to avoid hard-coding.
+      hotFeedback: "Hot!",
+      coldFeedback: "Cold..."
+    };
+  }
+
   render() {
     return (
       <main>
