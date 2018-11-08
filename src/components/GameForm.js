@@ -4,20 +4,26 @@ import './GameForm.css';
 export default class GameForm extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  
+    
   // Props received:
   //  minGuess: Number
   //  maxGuess: Number
   //  submitAction: function(val)
+    
+  }
+
+  
   
   onSubmit(event) {
     event.preventDefault();
   
     const guess = this.guessInput.value;
     
+    // Execute callback
     this.props.submitAction(guess);
+    
+    // Reset form
+    this.guessInput.value ='';
 
   }
   
