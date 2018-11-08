@@ -27,6 +27,9 @@ class Game extends Component {
             </ul>
           </div>
         </div>
+        
+        <button className="new-game">New Game</button>
+        
       </main>
     );
   }
