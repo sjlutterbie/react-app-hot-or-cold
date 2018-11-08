@@ -13,7 +13,6 @@ export default class GameForm extends React.Component {
   }
 
   
-  
   onSubmit(event) {
     event.preventDefault();
   
