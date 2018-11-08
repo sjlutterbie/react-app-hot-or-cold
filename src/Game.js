@@ -43,10 +43,20 @@ class Game extends React.Component {
   }
   
   onWin(guess) {
-    console.log("Congratulations!");
     this.setState({
       submitVisible: false
     });
+  }
+  
+  onNewGame() {
+
+    // Reset state elements necessary to create new game
+    this.setState({
+      secretNumber: Math.floor(Math.random() * 100)+ 1,
+      guessList: [],
+      submitVisible: true
+    });
+    
   }
   
   render() {
@@ -75,7 +85,8 @@ class Game extends React.Component {
 
         </div>
         
-        <button className="new-game">New Game</button>
+        <button className="new-game"
+                onClick={() => this.onNewGame()}>New Game</button>
         
       </main>
     );
